@@ -1,0 +1,14 @@
+:root {
+  --main-blue: #3470ff;
+  --hover-blue: ##0b44cd;
+  --input-color: #f7f7fb;
+  --white: ##fff;
+  --black: #121417;
+  --main-text: rgba(18, 20, 23, 0.5);
+  --select-text: rgba(18, 20, 23, 0.2);
+  --select-title: #8a8a89;
+  --transition: all 250ms ease;
+
+  --font-family: "Manrope", sans-serif;
+  --second-family: "Inter", sans-serif;
+}
