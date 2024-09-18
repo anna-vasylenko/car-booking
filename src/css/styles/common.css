@@ -1,0 +1,25 @@
+body {
+  font-family: var(--font-family);
+  color: var(--main-text);
+}
+
+button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 44px;
+  border: none;
+  border-radius: 12px;
+  background: var(--main-blue);
+  color: var(--white);
+  font-weight: 600;
+  line-height: 1.43;
+  transition: var(--transition);
+}
+button:hover {
+  background: var(--hover-blue);
+}
+.active {
+  font-weight: 600;
+}

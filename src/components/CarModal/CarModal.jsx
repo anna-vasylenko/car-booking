@@ -5,10 +5,14 @@ import s from "./CarModal.module.css";
 import { selectIsModalOpen } from "../../redux/modal/selectors";
 import { selectCurrentCar } from "../../redux/cars/selectors";
 
+Modal.setAppElement("#root");
+
 const CarModal = () => {
   const dispatch = useDispatch();
   const isOpenModal = useSelector(selectIsModalOpen);
   const car = useSelector(selectCurrentCar);
+
+  if (!car) return;
 
   return (
     <Modal
@@ -18,7 +22,6 @@ const CarModal = () => {
       overlayClassName={s.overlay}
     >
       <div className={s.modalWrapper}>
-        {" "}
         <img src={car.img} alt={car.model} width={"274"} height={"268"} />
       </div>
     </Modal>

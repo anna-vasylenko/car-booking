@@ -1,8 +1,8 @@
 :root {
   --main-blue: #3470ff;
-  --hover-blue: ##0b44cd;
+  --hover-blue: #0b44cd;
   --input-color: #f7f7fb;
-  --white: ##fff;
+  --white: #fff;
   --black: #121417;
   --main-text: rgba(18, 20, 23, 0.5);
   --select-text: rgba(18, 20, 23, 0.2);
@@ -11,4 +11,11 @@
 
   --font-family: "Manrope", sans-serif;
   --second-family: "Inter", sans-serif;
+
+  --gradient: linear-gradient(
+    167deg,
+    #3470ff 0%,
+    #113996 61.46%,
+    #0b44cd 90.54%
+  );
 }

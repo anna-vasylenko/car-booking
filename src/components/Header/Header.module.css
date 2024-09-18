@@ -1,0 +1,22 @@
+.header {
+  background: var(--gradient);
+  padding: 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  gap: 6px;
+}
+
+.logoIcon {
+  width: 30px;
+  height: 30px;
+  color: var(--white);
+}

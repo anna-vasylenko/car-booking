@@ -22,14 +22,29 @@ const carsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCars.fulfilled, (state, { payload }) => {
-      state.items = payload;
-      if (payload.length < axios.defaults.params.limit) {
-        state.isLastPage = true;
-      } else {
-        state.isLastPage = false;
-      }
-    });
+    builder
+      .addCase(fetchCars.fulfilled, (state, { payload }) => {
+        const existingId = state.items.map((item) => item.id);
+        const newItems = payload.filter(
+          (item) => !existingId.includes(item.id)
+        );
+        state.items.push(...newItems);
+
+        if (payload.length < axios.defaults.params.limit) {
+          state.isLastPage = true;
+        } else {
+          state.isLastPage = false;
+        }
+        state.isLoading = false;
+      })
+      .addCase(fetchCars.pending, (state) => {
+        state.isError = false;
+        state.isLoading = true;
+      })
+      .addCase(fetchCars.rejected, (state, { payload }) => {
+        state.isError = payload;
+        state.isLoading = false;
+      });
   },
 });
 

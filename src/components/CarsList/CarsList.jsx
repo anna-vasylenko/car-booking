@@ -1,9 +1,6 @@
-import { useSelector } from "react-redux";
-import { selectCars } from "../../redux/cars/selectors";
 import Car from "../Car/Car";
 
-const CarsList = () => {
-  const cars = useSelector(selectCars);
+const CarsList = ({ cars }) => {
   return (
     <div>
       <ul>
