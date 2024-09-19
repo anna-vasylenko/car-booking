@@ -20,8 +20,11 @@ const filterSlice = createSlice({
       state.mileage.min = mileage.min;
       state.mileage.max = mileage.max;
     },
+    clearSearchFilter() {
+      return initialState;
+    },
   },
 });
 
-export const { changeSearchFilter } = filterSlice.actions;
+export const { changeSearchFilter, clearSearchFilter } = filterSlice.actions;
 export const filterReducer = filterSlice.reducer;

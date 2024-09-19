@@ -28,7 +28,7 @@ export const brandOptions = brands.map((item) => ({
   label: item,
 }));
 
-const array = Array.from({ length: 20 }, (_, i) => 10 + i * 10);
+const array = Array.from({ length: 50 }, (_, i) => 10 + i * 10);
 
 export const priceOptions = array.map((item) => ({
   value: item,

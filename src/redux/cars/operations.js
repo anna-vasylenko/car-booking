@@ -9,7 +9,24 @@ export const fetchCars = createAsyncThunk(
   "cars/fetchCars",
   async (page = 1, thunkAPI) => {
     try {
-      const { data } = await axios.get("/cars", { params: { page } });
+      const { data } = await axios.get("/cars", {
+        params: { page },
+      });
+      return data;
+    } catch (error) {
+      toast.error("Unable to load cars at the moment. Please try again later.");
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchAll = createAsyncThunk(
+  "cars/fetchAll",
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await axios.get("/cars", {
+        params: { limit: undefined },
+      });
       return data;
     } catch (error) {
       toast.error("Unable to load cars at the moment. Please try again later.");

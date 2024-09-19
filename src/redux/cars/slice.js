@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars } from "./operations";
+import { fetchAll, fetchCars } from "./operations";
 import axios from "axios";
+import { handleFulFilled, handlePending, handleRejected } from "../handlers";
 
 const initialState = {
   items: [],
@@ -35,7 +36,10 @@ const carsSlice = createSlice({
         } else {
           state.isLastPage = false;
         }
-        state.isLoading = false;
+      })
+      .addCase(fetchAll.fulfilled, (state, { payload }) => {
+        state.items = payload;
+        state.isLastPage = true;
       })
       .addCase(fetchCars.pending, (state) => {
         state.isError = false;
@@ -44,7 +48,10 @@ const carsSlice = createSlice({
       .addCase(fetchCars.rejected, (state, { payload }) => {
         state.isError = payload;
         state.isLoading = false;
-      });
+      })
+      .addMatcher(({ type }) => type.endsWith("fulfilled"), handleFulFilled)
+      .addMatcher(({ type }) => type.endsWith("pending"), handlePending)
+      .addMatcher(({ type }) => type.endsWith("rejected"), handleRejected);
   },
 });
 

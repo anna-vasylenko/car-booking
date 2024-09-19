@@ -1,12 +1,15 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import Select from "react-select";
-// import { validationSchema } from "../../helpers/validationSchema";
-import { useDispatch, useSelector } from "react-redux";
-import { changeSearchFilter } from "../../redux/filters/slice";
-import { selectFilteredCars } from "../../redux/filters/selectors";
+import { validationSchema } from "../../helpers/validationSchema";
+import { useDispatch } from "react-redux";
+import {
+  changeSearchFilter,
+  clearSearchFilter,
+} from "../../redux/filters/slice";
 import s from "./SearchBox.module.css";
 import clsx from "clsx";
 import { brandOptions, priceOptions } from "../../helpers/options";
+import { fetchAll } from "../../redux/cars/operations";
 
 const initialValues = {
   brand: "",
@@ -17,12 +20,19 @@ const initialValues = {
 
 const SearchBox = () => {
   const dispatch = useDispatch();
-  const carsFi = useSelector(selectFilteredCars);
 
   const handleSubmit = (values) => {
     const { brand, price, min, max } = values;
-    dispatch(changeSearchFilter({ brand, price, mileage: { min, max } }));
-    console.log(carsFi);
+    dispatch(fetchAll()).then(() => {
+      dispatch(changeSearchFilter({ brand, price, mileage: { min, max } }));
+    });
+  };
+
+  const handleClickCancel = (resetForm, setFieldValue) => {
+    dispatch(clearSearchFilter());
+    resetForm();
+    setFieldValue("brand", "");
+    setFieldValue("price", "");
   };
 
   return (
@@ -30,9 +40,9 @@ const SearchBox = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
       >
-        {({ setFieldValue }) => (
+        {({ setFieldValue, resetForm, values }) => (
           <Form className={s.form}>
             <label className={s.label}>
               Car brand
@@ -40,6 +50,11 @@ const SearchBox = () => {
                 name="brand"
                 placeholder="Enter the text"
                 options={brandOptions}
+                value={
+                  brandOptions.find(
+                    (option) => option.value === values.brand
+                  ) || null
+                }
                 onChange={(selectedOption) =>
                   setFieldValue(
                     "brand",
@@ -57,6 +72,11 @@ const SearchBox = () => {
                 name="price"
                 placeholder="To $"
                 options={priceOptions}
+                value={
+                  priceOptions.find(
+                    (option) => option.value === values.price
+                  ) || null
+                }
                 onChange={(selectedOption) =>
                   setFieldValue(
                     "price",
@@ -94,6 +114,13 @@ const SearchBox = () => {
 
             <button type="submit" className={s.searchBtn}>
               Search
+            </button>
+            <button
+              type="button"
+              className={s.searchBtn}
+              onClick={() => handleClickCancel(resetForm, setFieldValue)}
+            >
+              Clear
             </button>
           </Form>
         )}

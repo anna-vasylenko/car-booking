@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 15px;
 }
 
 .label {
@@ -90,21 +90,24 @@ input::placeholder {
   }
 
   .selectBrand {
-    width: 190px;
+    width: 180px;
   }
   .selectPrice {
-    width: 120px;
+    width: 110px;
   }
 
   .searchBtn {
-    width: 100px;
+    width: 90px;
   }
   .input {
-    width: 90px;
+    width: 110px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
+  .form {
+    gap: 18px;
+  }
   .selectBrand {
     width: 224px;
   }
