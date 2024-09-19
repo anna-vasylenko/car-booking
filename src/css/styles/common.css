@@ -1,25 +1,51 @@
 body {
   font-family: var(--font-family);
+  font-weight: 400;
   color: var(--main-text);
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #3471ff68;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #3470ff68;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #3470ff68 transparent;
+  }
 }
 
 button {
   cursor: pointer;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 14px 44px;
   border: none;
   border-radius: 12px;
-  background: var(--main-blue);
+  background-color: var(--main-blue);
   color: var(--white);
   font-weight: 600;
   line-height: 1.43;
   transition: var(--transition);
 }
 button:hover {
-  background: var(--hover-blue);
+  background-color: var(--hover-blue);
 }
+
+.mainSection {
+  padding: 20px 40px;
+  margin: 0 auto;
+}
+
 .active {
   font-weight: 600;
+}
+
+@media only screen and (min-width: 1440px) {
+  .mainSection {
+    width: 1440px;
+    padding: 0 128px;
+  }
 }

@@ -8,6 +8,7 @@
   --select-text: rgba(18, 20, 23, 0.2);
   --select-title: #8a8a89;
   --transition: all 250ms ease;
+  --scale: scale(1.1);
 
   --font-family: "Manrope", sans-serif;
   --second-family: "Inter", sans-serif;

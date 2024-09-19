@@ -1,0 +1,14 @@
+.loadMoreBtn {
+  margin: 0 auto;
+  background-color: transparent;
+  color: var(--main-blue);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  &:hover {
+    color: var(--hover-blue);
+    background-color: transparent;
+  }
+}

@@ -1,13 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import Select from "react-select";
-import { options } from "../../helpers/brands";
-import { prices } from "../../helpers/prices";
 // import { validationSchema } from "../../helpers/validationSchema";
 import { useDispatch, useSelector } from "react-redux";
 import { changeSearchFilter } from "../../redux/filters/slice";
 import { selectFilteredCars } from "../../redux/filters/selectors";
 import s from "./SearchBox.module.css";
 import clsx from "clsx";
+import { brandOptions, priceOptions } from "../../helpers/options";
 
 const initialValues = {
   brand: "",
@@ -40,7 +39,7 @@ const SearchBox = () => {
               <Select
                 name="brand"
                 placeholder="Enter the text"
-                options={options}
+                options={brandOptions}
                 onChange={(selectedOption) =>
                   setFieldValue(
                     "brand",
@@ -57,7 +56,7 @@ const SearchBox = () => {
               <Select
                 name="price"
                 placeholder="To $"
-                options={prices}
+                options={priceOptions}
                 onChange={(selectedOption) =>
                   setFieldValue(
                     "price",

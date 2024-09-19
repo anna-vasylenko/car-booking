@@ -1,0 +1,26 @@
+.carList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px 29px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.carItem {
+  width: 274px;
+  transition: var(--transition);
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .carList {
+    justify-content: start;
+  }
+  .carItem {
+    width: calc((100% - 3 * 29px) / 4);
+  }
+}

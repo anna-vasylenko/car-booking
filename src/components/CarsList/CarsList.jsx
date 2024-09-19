@@ -1,12 +1,13 @@
-import Car from "../Car/Car";
+import CarItem from "../CarItem/CarItem";
+import s from "./CarsList.module.css";
 
 const CarsList = ({ cars }) => {
   return (
     <div>
-      <ul>
+      <ul className={s.carList}>
         {cars.map((item) => (
-          <li key={item.id}>
-            <Car car={item} />
+          <li key={item.id} className={s.carItem}>
+            <CarItem car={item} />
           </li>
         ))}
       </ul>

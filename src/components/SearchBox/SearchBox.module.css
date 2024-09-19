@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 0;
+  padding-top: 30px;
 }
 
 .form {
@@ -61,6 +61,7 @@
   background-color: var(--input-color);
   border: none;
   transition: var(--transition);
+  outline: none;
 }
 input::placeholder {
   color: var(--black);
@@ -85,8 +86,25 @@ input::placeholder {
   .form {
     flex-direction: row;
     align-items: end;
+    width: 100%;
   }
 
+  .selectBrand {
+    width: 190px;
+  }
+  .selectPrice {
+    width: 120px;
+  }
+
+  .searchBtn {
+    width: 100px;
+  }
+  .input {
+    width: 90px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
   .selectBrand {
     width: 224px;
   }
@@ -96,12 +114,6 @@ input::placeholder {
 
   .searchBtn {
     width: 136px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .form {
-    margin-bottom: 20px;
   }
   .input {
     width: 160px;

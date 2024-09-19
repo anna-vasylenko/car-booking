@@ -23,4 +23,14 @@ const brands = [
   "Land",
 ];
 
-export const options = brands.map((item) => ({ value: item, label: item }));
+export const brandOptions = brands.map((item) => ({
+  value: item,
+  label: item,
+}));
+
+const array = Array.from({ length: 20 }, (_, i) => 10 + i * 10);
+
+export const priceOptions = array.map((item) => ({
+  value: item,
+  label: item,
+}));

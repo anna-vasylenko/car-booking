@@ -13,6 +13,7 @@ import CarModal from "../../components/CarModal/CarModal";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import { selectFilteredCars } from "../../redux/filters/selectors";
 import Loader from "../../components/Loader/Loader";
+import MessageCatalog from "../../components/MessageCatalog/MessageCatalog";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
@@ -30,9 +31,10 @@ const CatalogPage = () => {
   };
 
   return (
-    <div>
+    <div className="mainSection">
       <SearchBox />
       <CarsList cars={cars} />
+      {!cars.length > 0 && <MessageCatalog />}
       {!isLastPage && <LoadMoreBtn handleClick={handleClick} />}
       {isLoading && <Loader />}
       <CarModal />
