@@ -36,14 +36,12 @@ const CatalogPage = () => {
   useEffect(() => {
     dispatch(clearSearchFilter());
     dispatch(fetchAll());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(fetchCars(page));
   }, [dispatch, page]);
 
   const handleClick = () => {
     dispatch(setPage());
+    dispatch(fetchCars(page));
   };
 
   return (
