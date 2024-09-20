@@ -42,6 +42,12 @@
   position: absolute;
   top: 16px;
   right: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  &:hover,
+  &:focus {
+    transform: var(--scale);
+  }
 }
 
 .imgWrapper {
@@ -152,4 +158,8 @@
     width: 541px;
     height: 800px;
   }
+}
+
+.noScroll {
+  overflow: hidden;
 }

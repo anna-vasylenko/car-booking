@@ -68,8 +68,21 @@
   border-radius: 14px;
 }
 
+.select :global(.react-select__option) {
+  background-color: var(--white);
+  color: var(--select-text);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
 .selectInput :global(.react-select__option:hover) {
   color: var(--black);
+  background-color: var(--white);
+}
+
+.selectInput :global(.react-select__option:focus) {
+  color: var(--black);
+  background-color: var(--white);
 }
 
 .selectInput :global(.react-select__dropdown-indicator) {
@@ -108,9 +121,6 @@
   outline: none;
   &:hover {
     border: 1px solid var(--main-blue);
-  }
-  &:focus {
-    border: 2px solid var(--main-blue);
   }
 }
 

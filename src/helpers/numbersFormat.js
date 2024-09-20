@@ -23,3 +23,15 @@ export const getRentalConditions = (car) => {
     formatValue("Price", rentalPrice),
   ];
 };
+
+export const formatNumber = (value) => {
+  if (!value) return "";
+  return numeral(value).format("0,0");
+};
+
+export const handleNumeralInputChange = (e, setFieldValue, fieldName) => {
+  const rawValue = e.target.value.replace(/,/g, "");
+  if (!isNaN(rawValue)) {
+    setFieldValue(fieldName, rawValue);
+  }
+};

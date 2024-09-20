@@ -10,6 +10,10 @@ import s from "./SearchBox.module.css";
 import clsx from "clsx";
 import { brandOptions, priceOptions } from "../../helpers/options";
 import { fetchAll } from "../../redux/cars/operations";
+import {
+  formatNumber,
+  handleNumeralInputChange,
+} from "../../helpers/numbersFormat";
 
 const initialValues = {
   brand: "",
@@ -18,13 +22,14 @@ const initialValues = {
   max: "",
 };
 
-const SearchBox = () => {
+const SearchBox = ({ onSearch }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
     const { brand, price, min, max } = values;
     dispatch(fetchAll()).then(() => {
       dispatch(changeSearchFilter({ brand, price, mileage: { min, max } }));
+      onSearch();
     });
   };
 
@@ -94,8 +99,12 @@ const SearchBox = () => {
                 <div>
                   <Field
                     name="min"
-                    type="number"
+                    type="text"
                     placeholder="From"
+                    value={formatNumber(values.min)}
+                    onChange={(e) =>
+                      handleNumeralInputChange(e, setFieldValue, "min")
+                    }
                     className={clsx(s.input, s.inputFrom)}
                   />
                   <ErrorMessage name="min" component="span" />
@@ -103,8 +112,12 @@ const SearchBox = () => {
                 <div>
                   <Field
                     name="max"
-                    type="number"
+                    type="text"
                     placeholder="To"
+                    value={formatNumber(values.max)}
+                    onChange={(e) =>
+                      handleNumeralInputChange(e, setFieldValue, "max")
+                    }
                     className={clsx(s.input, s.inputTo)}
                   />
                   <ErrorMessage name="max" component="span" />

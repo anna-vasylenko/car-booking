@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CarsList from "../../components/CarsList/CarsList";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,20 +22,34 @@ const CatalogPage = () => {
   const isLoading = useSelector(selectIsLoading);
   const cars = useSelector(selectFilteredCars);
 
+  const [visibleCarsCount, setVisibleCarsCount] = useState(12);
+
   useEffect(() => {
     dispatch(fetchCars(page));
   }, [dispatch, page]);
 
   const handleClick = () => {
     dispatch(setPage());
+    setVisibleCarsCount(visibleCarsCount + 12);
+  };
+
+  const handleClickFilteredCar = () => {
+    setVisibleCarsCount(visibleCarsCount + 12);
+  };
+
+  const handleSearch = () => {
+    setVisibleCarsCount(12);
   };
 
   return (
     <div className="mainSection">
-      <SearchBox />
-      <CarsList cars={cars} />
+      <SearchBox onSearch={handleSearch} />
+      <CarsList cars={cars.slice(0, visibleCarsCount)} />
       {!cars.length > 0 && <MessageCatalog />}
       {!isLastPage && <LoadMoreBtn handleClick={handleClick} />}
+      {cars.length > visibleCarsCount && (
+        <LoadMoreBtn handleClick={handleClickFilteredCar} />
+      )}
       {isLoading && <Loader />}
       <CarModal />
     </div>

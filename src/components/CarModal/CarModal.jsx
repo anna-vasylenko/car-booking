@@ -26,6 +26,7 @@ const CarModal = () => {
       onRequestClose={() => dispatch(closeModal())}
       className={s.modal}
       overlayClassName={s.overlay}
+      bodyOpenClassName={s.noScroll}
     >
       <div className={s.modalWrapper}>
         <IoCloseOutline
