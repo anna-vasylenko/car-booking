@@ -22,14 +22,13 @@ const initialValues = {
   max: "",
 };
 
-const SearchBox = ({ onSearch }) => {
+const SearchBox = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
     const { brand, price, min, max } = values;
     dispatch(fetchAll()).then(() => {
       dispatch(changeSearchFilter({ brand, price, mileage: { min, max } }));
-      onSearch();
     });
   };
 
