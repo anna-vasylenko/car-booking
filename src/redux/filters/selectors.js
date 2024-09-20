@@ -1,13 +1,12 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { selectCars } from "../cars/selectors";
+import { selectAllCars } from "../cars/selectors";
 
 export const selectFilters = (state) => state.filter;
+export const selectFilterApplied = (state) => state.filter.filterApplied;
 
 export const selectFilteredCars = createSelector(
-  [selectCars, selectFilters],
+  [selectAllCars, selectFilters],
   (cars, filter) => {
-    console.log(filter);
-
     const { brand, price, mileage } = filter;
 
     const filteredCars = cars.filter((car) => {

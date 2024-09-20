@@ -7,6 +7,7 @@ const initialState = {
     min: 0,
     max: 100000,
   },
+  filterApplied: false,
 };
 
 const filterSlice = createSlice({
@@ -19,6 +20,7 @@ const filterSlice = createSlice({
       state.price = price;
       state.mileage.min = mileage.min;
       state.mileage.max = mileage.max;
+      state.filterApplied = true;
     },
     clearSearchFilter() {
       return initialState;

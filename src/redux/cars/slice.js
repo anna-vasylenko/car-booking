@@ -4,7 +4,8 @@ import axios from "axios";
 import { handleFulFilled, handlePending, handleRejected } from "../handlers";
 
 const initialState = {
-  items: [],
+  cars: [],
+  allCars: [],
   page: 1,
   isLoading: false,
   isError: null,
@@ -25,11 +26,11 @@ const carsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCars.fulfilled, (state, { payload }) => {
-        const existingId = state.items.map((item) => item.id);
+        const existingId = state.cars.map((item) => item.id);
         const newItems = payload.filter(
           (item) => !existingId.includes(item.id)
         );
-        state.items.push(...newItems);
+        state.cars.push(...newItems);
 
         if (payload.length < axios.defaults.params.limit) {
           state.isLastPage = true;
@@ -38,7 +39,7 @@ const carsSlice = createSlice({
         }
       })
       .addCase(fetchAll.fulfilled, (state, { payload }) => {
-        state.items = payload;
+        state.allCars = payload;
         state.isLastPage = true;
       })
       .addCase(fetchCars.pending, (state) => {

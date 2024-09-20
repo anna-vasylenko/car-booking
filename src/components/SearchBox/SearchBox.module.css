@@ -25,6 +25,7 @@
 }
 
 .selectInput :global(.react-select__control) {
+  cursor: pointer;
   margin-top: 8px;
   height: 48px;
   font-weight: 500;
@@ -38,8 +39,10 @@
   transition: var(--transition);
 }
 
-.selectInput :global(.react-select__placeholder) {
-  color: var(--black);
+.selectInput :global(.react-select__control):hover {
+  border: 1px solid var(--main-blue);
+  outline: none;
+  box-shadow: none;
 }
 
 .selectInput :global(.react-select__control--is-focused) {
@@ -48,29 +51,13 @@
   box-shadow: none;
 }
 
-.selectInput :global(.react-select__control:hover) {
-  border: 1px solid var(--main-blue);
-  outline: none;
-}
-
-.selectInput :global(.react-select__single-value) {
-  font-weight: 500;
-  font-size: 18px;
+.selectInput :global(.react-select__placeholder) {
   color: var(--black);
 }
 
-.selectInput :global(.react-select__menu) {
-  margin-top: 4px;
-  z-index: 2;
-  overflow: hidden;
-  scrollbar-width: 2px;
-  border: 1px solid rgba(18, 20, 23, 0.05);
-  border-radius: 14px;
-}
-
-.select :global(.react-select__option) {
-  background-color: var(--white);
+.selectInput :global(.react-select__option) {
   color: var(--select-text);
+  background-color: var(--white);
   cursor: pointer;
   transition: var(--transition);
 }
@@ -85,6 +72,28 @@
   background-color: var(--white);
 }
 
+.selectInput :global(.react-select__option--is-selected) {
+  background-color: #f7f7fb;
+  color: #121417;
+}
+
+.selectInput :global(.react-select__menu) {
+  margin-top: 4px;
+  z-index: 4;
+  overflow: hidden;
+  scrollbar-width: 2px;
+  border: 1px solid rgba(18, 20, 23, 0.05);
+  box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
+  background-color: var(--white);
+  border-radius: 14px;
+}
+
+.selectInput :global(.react-select__single-value) {
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--black);
+}
+
 .selectInput :global(.react-select__dropdown-indicator) {
   border: none;
   color: var(--black);
@@ -92,6 +101,13 @@
 
 .selectInput :global(.react-select__dropdown-indicator:hover) {
   border: none;
+  color: var(--black);
+}
+
+.selectInput
+  :global(.react-select__control--menu-is-open)
+  :global(.react-select__dropdown-indicator) {
+  transform: rotate(180deg);
 }
 
 .selectInput :global(.react-select__indicator-separator) {

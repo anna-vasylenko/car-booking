@@ -1,6 +1,5 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import Select from "react-select";
-import { validationSchema } from "../../helpers/validationSchema";
 import { useDispatch } from "react-redux";
 import {
   changeSearchFilter,
@@ -9,7 +8,6 @@ import {
 import s from "./SearchBox.module.css";
 import clsx from "clsx";
 import { brandOptions, priceOptions } from "../../helpers/options";
-import { fetchAll } from "../../redux/cars/operations";
 import {
   formatNumber,
   handleNumeralInputChange,
@@ -27,9 +25,7 @@ const SearchBox = () => {
 
   const handleSubmit = (values) => {
     const { brand, price, min, max } = values;
-    dispatch(fetchAll()).then(() => {
-      dispatch(changeSearchFilter({ brand, price, mileage: { min, max } }));
-    });
+    dispatch(changeSearchFilter({ brand, price, mileage: { min, max } }));
   };
 
   const handleClickCancel = (resetForm, setFieldValue) => {
@@ -41,11 +37,7 @@ const SearchBox = () => {
 
   return (
     <div className={s.formWrapper}>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
+      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ setFieldValue, resetForm, values }) => (
           <Form className={s.form}>
             <label className={s.label}>
@@ -106,7 +98,6 @@ const SearchBox = () => {
                     }
                     className={clsx(s.input, s.inputFrom)}
                   />
-                  <ErrorMessage name="min" component="span" />
                 </div>
                 <div>
                   <Field
@@ -119,7 +110,6 @@ const SearchBox = () => {
                     }
                     className={clsx(s.input, s.inputTo)}
                   />
-                  <ErrorMessage name="max" component="span" />
                 </div>
               </div>
             </label>
