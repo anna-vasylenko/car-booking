@@ -42,7 +42,7 @@ const carsSlice = createSlice({
       })
       .addCase(fetchAll.fulfilled, (state, { payload }) => {
         state.allCars = payload;
-        state.isLastPage = true;
+        state.isLastPage = false;
       })
       .addMatcher(({ type }) => type.endsWith("fulfilled"), handleFulFilled)
       .addMatcher(({ type }) => type.endsWith("pending"), handlePending)
