@@ -33,12 +33,56 @@
   color: var(--black);
   border-radius: 14px;
   background-color: var(--input-color);
+  outline: none;
   border: none;
   transition: var(--transition);
 }
 
 .selectInput :global(.react-select__placeholder) {
   color: var(--black);
+}
+
+.selectInput :global(.react-select__control--is-focused) {
+  border: 1px solid var(--main-blue);
+  outline: none;
+  box-shadow: none;
+}
+
+.selectInput :global(.react-select__control:hover) {
+  border: 1px solid var(--main-blue);
+  outline: none;
+}
+
+.selectInput :global(.react-select__single-value) {
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--black);
+}
+
+.selectInput :global(.react-select__menu) {
+  margin-top: 4px;
+  z-index: 2;
+  overflow: hidden;
+  scrollbar-width: 2px;
+  border: 1px solid rgba(18, 20, 23, 0.05);
+  border-radius: 14px;
+}
+
+.selectInput :global(.react-select__option:hover) {
+  color: var(--black);
+}
+
+.selectInput :global(.react-select__dropdown-indicator) {
+  border: none;
+  color: var(--black);
+}
+
+.selectInput :global(.react-select__dropdown-indicator:hover) {
+  border: none;
+}
+
+.selectInput :global(.react-select__indicator-separator) {
+  display: none;
 }
 
 .inputWrapper {
@@ -62,7 +106,14 @@
   border: none;
   transition: var(--transition);
   outline: none;
+  &:hover {
+    border: 1px solid var(--main-blue);
+  }
+  &:focus {
+    border: 2px solid var(--main-blue);
+  }
 }
+
 input::placeholder {
   color: var(--black);
 }
@@ -76,6 +127,21 @@ input::placeholder {
 .inputTo {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.inputWrapper:hover .inputFrom {
+  border: 1px solid var(--main-blue);
+  border-right: 1px solid rgba(138, 138, 137, 0.2);
+}
+
+.inputWrapper:hover .inputTo {
+  border: 1px solid var(--main-blue);
+  border-left: none;
+}
+
+.inputFrom:hover .inputTo,
+.inputTo:hover .inputFrom {
+  border: 1px solid var(--main-blue);
 }
 
 .searchBtn {
