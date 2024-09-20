@@ -56,7 +56,7 @@
 }
 
 .selectInput :global(.react-select__option) {
-  color: var(--select-text);
+  color: var(--main-text);
   background-color: var(--white);
   cursor: pointer;
   transition: var(--transition);
@@ -114,7 +114,7 @@
   display: none;
 }
 
-.inputWrapper {
+.inputsWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,27 +140,38 @@
   }
 }
 
-input::placeholder {
+.wrapper {
+  position: relative;
+}
+
+.span {
+  position: absolute;
+  left: 24px;
+  bottom: 13px;
   color: var(--black);
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .inputFrom {
+  padding-left: 70px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-right: 1px solid rgba(138, 138, 137, 0.2);
 }
 
 .inputTo {
+  padding-left: 50px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.inputWrapper:hover .inputFrom {
+.inputsWrapper:hover .inputFrom {
   border: 1px solid var(--main-blue);
   border-right: 1px solid rgba(138, 138, 137, 0.2);
 }
 
-.inputWrapper:hover .inputTo {
+.inputsWrapper:hover .inputTo {
   border: 1px solid var(--main-blue);
   border-left: none;
 }
@@ -176,28 +187,32 @@ input::placeholder {
 
 @media only screen and (min-width: 768px) {
   .form {
+    max-width: 774px;
     flex-direction: row;
     align-items: end;
-    width: 100%;
+    flex-wrap: wrap;
   }
 
   .selectBrand {
-    width: 180px;
+    width: 250px;
   }
   .selectPrice {
-    width: 110px;
+    width: 125px;
   }
 
   .searchBtn {
-    width: 90px;
+    width: 136px;
   }
   .input {
-    width: 110px;
+    width: 160px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .form {
+    flex-direction: row;
+    align-items: end;
+    width: 100%;
     gap: 18px;
   }
   .selectBrand {

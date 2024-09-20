@@ -13,6 +13,7 @@ const initialState = {
 const filterSlice = createSlice({
   name: "filter",
   initialState,
+
   reducers: {
     changeSearchFilter(state, { payload }) {
       const { brand, price, mileage } = payload;

@@ -1,32 +1,34 @@
 import { useEffect } from "react";
-import CarsList from "../../components/CarsList/CarsList";
-import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import { useDispatch, useSelector } from "react-redux";
+
+import SearchBox from "../../components/SearchBox/SearchBox";
+import CarsList from "../../components/CarsList/CarsList";
+import CarModal from "../../components/CarModal/CarModal";
+import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
+import MessageCatalog from "../../components/MessageCatalog/MessageCatalog";
+import Loader from "../../components/Loader/Loader";
+
 import { fetchAll, fetchCars } from "../../redux/cars/operations";
+import { setPage } from "../../redux/cars/slice";
 import {
   selectCars,
   selectIsLastPage,
   selectIsLoading,
   selectPage,
 } from "../../redux/cars/selectors";
-import { setPage } from "../../redux/cars/slice";
-import CarModal from "../../components/CarModal/CarModal";
-import SearchBox from "../../components/SearchBox/SearchBox";
+import { clearSearchFilter } from "../../redux/filters/slice";
 import {
   selectFilterApplied,
   selectFilteredCars,
 } from "../../redux/filters/selectors";
-import Loader from "../../components/Loader/Loader";
-import MessageCatalog from "../../components/MessageCatalog/MessageCatalog";
-import { clearSearchFilter } from "../../redux/filters/slice";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
+  const cars = useSelector(selectCars);
+  const filteredCars = useSelector(selectFilteredCars);
   const page = useSelector(selectPage);
   const isLastPage = useSelector(selectIsLastPage);
   const isLoading = useSelector(selectIsLoading);
-  const cars = useSelector(selectCars);
-  const filteredCars = useSelector(selectFilteredCars);
   const filterApplied = useSelector(selectFilterApplied);
 
   const visibleCars = filterApplied ? filteredCars : cars;

@@ -7,6 +7,7 @@ const initialState = {
 const favoriteSlice = createSlice({
   name: "favorite",
   initialState,
+
   reducers: {
     addToFavorite: (state, { payload }) => {
       state.favorites.unshift(payload);

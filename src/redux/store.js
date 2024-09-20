@@ -12,8 +12,8 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import { carsReducer } from "./cars/slice";
-import { filterReducer } from "./filters/slice";
 import { favoriteReducer } from "./favorite/slice";
+import { filterReducer } from "./filters/slice";
 import { modalReducer } from "./modal/slice";
 
 const persistConfig = {

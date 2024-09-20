@@ -1,12 +1,14 @@
-import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../redux/modal/slice";
-import s from "./CarModal.module.css";
-import { selectIsModalOpen } from "../../redux/modal/selectors";
-import { selectCurrentCar } from "../../redux/cars/selectors";
+import Modal from "react-modal";
 import { IoCloseOutline } from "react-icons/io5";
-import { getCarDescriptionForModal } from "../../helpers/getCarData";
+
+import { selectIsModalOpen } from "../../redux/modal/selectors";
+import { closeModal } from "../../redux/modal/slice";
+import { selectCurrentCar } from "../../redux/cars/selectors";
 import { getRentalConditions } from "../../helpers/numbersFormat";
+import { getCarDescriptionForModal } from "../../helpers/getCarData";
+
+import s from "./CarModal.module.css";
 
 Modal.setAppElement("#root");
 

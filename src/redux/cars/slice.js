@@ -15,6 +15,7 @@ const initialState = {
 const carsSlice = createSlice({
   name: "cars",
   initialState,
+
   reducers: {
     setCurrentCar(state, { payload }) {
       state.currentCar = payload;
@@ -23,6 +24,7 @@ const carsSlice = createSlice({
       state.page += 1;
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchCars.fulfilled, (state, { payload }) => {
@@ -41,14 +43,6 @@ const carsSlice = createSlice({
       .addCase(fetchAll.fulfilled, (state, { payload }) => {
         state.allCars = payload;
         state.isLastPage = true;
-      })
-      .addCase(fetchCars.pending, (state) => {
-        state.isError = false;
-        state.isLoading = true;
-      })
-      .addCase(fetchCars.rejected, (state, { payload }) => {
-        state.isError = payload;
-        state.isLoading = false;
       })
       .addMatcher(({ type }) => type.endsWith("fulfilled"), handleFulFilled)
       .addMatcher(({ type }) => type.endsWith("pending"), handlePending)

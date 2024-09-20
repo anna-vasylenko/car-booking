@@ -1,7 +1,9 @@
-import { FaCar } from "react-icons/fa";
-import Navigation from "../Navigation/Navigation";
-import s from "./Header.module.css";
 import { Link } from "react-router-dom";
+import { FaCar } from "react-icons/fa";
+
+import Navigation from "../Navigation/Navigation";
+
+import s from "./Header.module.css";
 
 const Header = () => {
   return (

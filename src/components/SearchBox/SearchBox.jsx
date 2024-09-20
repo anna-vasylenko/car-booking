@@ -1,24 +1,20 @@
+import { useDispatch } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import Select from "react-select";
-import { useDispatch } from "react-redux";
+import clsx from "clsx";
+
 import {
   changeSearchFilter,
   clearSearchFilter,
 } from "../../redux/filters/slice";
-import s from "./SearchBox.module.css";
-import clsx from "clsx";
 import { brandOptions, priceOptions } from "../../helpers/options";
+import { initialValues } from "../../helpers/initialValues";
 import {
   formatNumber,
   handleNumeralInputChange,
 } from "../../helpers/numbersFormat";
 
-const initialValues = {
-  brand: "",
-  price: "",
-  min: "",
-  max: "",
-};
+import s from "./SearchBox.module.css";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
@@ -86,12 +82,12 @@ const SearchBox = () => {
 
             <label>
               Сar mileage / km
-              <div className={s.inputWrapper}>
-                <div>
+              <div className={s.inputsWrapper}>
+                <div className={s.wrapper}>
+                  <span className={s.span}>From</span>
                   <Field
                     name="min"
                     type="text"
-                    placeholder="From"
                     value={formatNumber(values.min)}
                     onChange={(e) =>
                       handleNumeralInputChange(e, setFieldValue, "min")
@@ -99,11 +95,11 @@ const SearchBox = () => {
                     className={clsx(s.input, s.inputFrom)}
                   />
                 </div>
-                <div>
+                <div className={s.wrapper}>
+                  <span className={s.span}>To</span>
                   <Field
                     name="max"
                     type="text"
-                    placeholder="To"
                     value={formatNumber(values.max)}
                     onChange={(e) =>
                       handleNumeralInputChange(e, setFieldValue, "max")

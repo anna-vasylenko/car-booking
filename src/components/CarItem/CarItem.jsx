@@ -1,26 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../redux/modal/slice";
-import { setCurrentCar } from "../../redux/cars/slice";
+import clsx from "clsx";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
+
+import { openModal } from "../../redux/modal/slice";
+import { setCurrentCar } from "../../redux/cars/slice";
 import { addToFavorite, removeFromFavorite } from "../../redux/favorite/slice";
 import { selectFavorites } from "../../redux/favorite/selectors";
 import { getCarDescription } from "../../helpers/getCarData";
+
 import s from "./CarItem.module.css";
-import clsx from "clsx";
 
 const CarItem = ({ car }) => {
   const dispatch = useDispatch();
   const favoriteCars = useSelector(selectFavorites);
 
   const isExist = favoriteCars.some((item) => item?.id === car?.id);
+  const description = getCarDescription(car);
 
   const handleClick = () => {
     dispatch(openModal());
     dispatch(setCurrentCar(car));
   };
-
-  const description = getCarDescription(car);
 
   return (
     <div className={s.wrapper}>

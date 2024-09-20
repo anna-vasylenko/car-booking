@@ -1,10 +1,12 @@
-import { useSelector } from "react-redux";
-import CarModal from "../../components/CarModal/CarModal";
-import CarsList from "../../components/CarsList/CarsList";
-import { selectFavorites } from "../../redux/favorite/selectors";
-import MessageFavorite from "../../components/MessageFavorite/MessageFavorite";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+
+import CarsList from "../../components/CarsList/CarsList";
+import CarModal from "../../components/CarModal/CarModal";
+import MessageFavorite from "../../components/MessageFavorite/MessageFavorite";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
+
+import { selectFavorites } from "../../redux/favorite/selectors";
 
 const FavoritesPage = () => {
   const favoriteCars = useSelector(selectFavorites);
