@@ -18,6 +18,31 @@ Once the application is up and running, users can:
 
 ---
 
+### Getting Started
+
+To set up and run the project locally, follow these steps:
+
+1. Clone the repository:
+
+```
+git clone https://github.com/anna-vasylenko/car-booking.git
+cd car-booking
+```
+
+2. Install project dependencies:
+
+```
+$ npm install
+```
+
+3. Start the Development Server:
+
+```
+npm run dev
+```
+
+---
+
 ### Project Structure
 
 The project consists of the following main pages:
