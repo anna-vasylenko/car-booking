@@ -12,11 +12,12 @@
 .link {
   color: var(--main-blue);
   transition: var(--transition);
-  &:hover,
-  &:focus {
-    color: var(--hover-blue);
-    text-decoration: underline;
-  }
+}
+
+.link:hover,
+.link:focus {
+  color: var(--hover-blue);
+  text-decoration: underline;
 }
 
 @media only screen and (min-width: 768px) {

@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { useId } from "react";
 import { Field, Form, Formik } from "formik";
 import Select from "react-select";
 import clsx from "clsx";
@@ -19,6 +20,11 @@ import s from "./SearchBox.module.css";
 const SearchBox = () => {
   const dispatch = useDispatch();
 
+  const brandFieldId = useId();
+  const priceFieldId = useId();
+  const minFieldId = useId();
+  const maxFieldId = useId();
+
   const handleSubmit = (values) => {
     const { brand, price, min, max } = values;
     dispatch(changeSearchFilter({ brand, price, mileage: { min, max } }));
@@ -36,9 +42,12 @@ const SearchBox = () => {
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ setFieldValue, resetForm, values }) => (
           <Form className={s.form}>
-            <label className={s.label}>
-              Car brand
+            <div className={s.formGroup}>
+              <label className={s.label} htmlFor={brandFieldId}>
+                Car brand
+              </label>
               <Select
+                id={brandFieldId}
                 name="brand"
                 placeholder="Enter the text"
                 options={brandOptions}
@@ -56,11 +65,12 @@ const SearchBox = () => {
                 classNamePrefix="react-select"
                 className={clsx(s.selectInput, s.selectBrand)}
               />
-            </label>
+            </div>
 
-            <label>
-              Price/ 1 hour
+            <div className={s.formGroup}>
+              <label htmlFor={priceFieldId}>Price/ 1 hour</label>
               <Select
+                id={priceFieldId}
                 name="price"
                 placeholder="To $"
                 options={priceOptions}
@@ -78,14 +88,17 @@ const SearchBox = () => {
                 classNamePrefix="react-select"
                 className={clsx(s.selectInput, s.selectPrice)}
               />
-            </label>
+            </div>
 
-            <label>
-              Сar mileage / km
+            <fieldset className={s.formGroup}>
+              <legend className={s.legend}>Сar mileage / km</legend>
               <div className={s.inputsWrapper}>
                 <div className={s.wrapper}>
-                  <span className={s.span}>From</span>
+                  <label className={s.span} htmlFor={minFieldId}>
+                    From
+                  </label>
                   <Field
+                    id={minFieldId}
                     name="min"
                     type="text"
                     value={formatNumber(values.min)}
@@ -96,8 +109,11 @@ const SearchBox = () => {
                   />
                 </div>
                 <div className={s.wrapper}>
-                  <span className={s.span}>To</span>
+                  <label htmlFor={maxFieldId} className={s.span}>
+                    To
+                  </label>
                   <Field
+                    id={maxFieldId}
                     name="max"
                     type="text"
                     value={formatNumber(values.max)}
@@ -108,7 +124,7 @@ const SearchBox = () => {
                   />
                 </div>
               </div>
-            </label>
+            </fieldset>
 
             <button type="submit" className={s.searchBtn}>
               Search

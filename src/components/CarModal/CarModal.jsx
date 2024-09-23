@@ -31,10 +31,14 @@ const CarModal = () => {
       bodyOpenClassName={s.noScroll}
     >
       <div className={s.modalWrapper}>
-        <IoCloseOutline
+        <button
+          className={s.closeBtn}
           onClick={() => dispatch(closeModal())}
-          className={s.icon}
-        />
+          type="button"
+          aria-label="Close modal window"
+        >
+          <IoCloseOutline className={s.icon} />
+        </button>
         <div className={s.imgWrapper}>
           <img src={car.img} alt={car.model} width={"274"} height={"268"} />
         </div>

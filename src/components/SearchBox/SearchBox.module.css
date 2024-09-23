@@ -81,7 +81,6 @@
   margin-top: 4px;
   z-index: 4;
   overflow: hidden;
-  scrollbar-width: 2px;
   border: 1px solid rgba(18, 20, 23, 0.05);
   box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.02);
   background-color: var(--white);
@@ -135,9 +134,10 @@
   border: none;
   transition: var(--transition);
   outline: none;
-  &:hover {
-    border: 1px solid var(--main-blue);
-  }
+}
+
+.input:hover {
+  border: 1px solid var(--main-blue);
 }
 
 .wrapper {
@@ -212,6 +212,7 @@
   .form {
     flex-direction: row;
     align-items: end;
+    flex-wrap: nowrap;
     width: 100%;
     gap: 18px;
   }

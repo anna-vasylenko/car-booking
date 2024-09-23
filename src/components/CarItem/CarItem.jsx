@@ -26,17 +26,23 @@ const CarItem = ({ car }) => {
   return (
     <div className={s.wrapper}>
       {isExist ? (
-        <FaHeart
-          color="#3470ff"
+        <button
+          className={s.favoriteBtn}
           onClick={() => dispatch(removeFromFavorite(car.id))}
-          className={s.icon}
-        />
+          type="button"
+          aria-label="Remove from favorites"
+        >
+          <FaHeart className={s.icon} color="#3470ff" />
+        </button>
       ) : (
-        <FaRegHeart
-          color="#fff"
+        <button
+          className={s.favoriteBtn}
           onClick={() => dispatch(addToFavorite(car))}
-          className={s.icon}
-        />
+          type="button"
+          aria-label="Add to favorites"
+        >
+          <FaRegHeart color="#fff" className={s.icon} />
+        </button>
       )}
       <div className={s.imgWrapper}>
         <img src={car.img} alt={car.model} width={"274"} height={"268"} />

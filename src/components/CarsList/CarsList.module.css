@@ -11,9 +11,10 @@
 .carItem {
   width: 274px;
   transition: var(--transition);
-  &:hover {
-    transform: scale(1.04);
-  }
+}
+
+.carItem:hover {
+  transform: scale(1.04);
 }
 
 @media only screen and (min-width: 1440px) {
